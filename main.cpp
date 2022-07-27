@@ -7,16 +7,20 @@
 #include <optional>
 #include <sstream>
 
-#include "scanner.h"
-#include "token.h"
+#include "src/scanner.h"
+#include "src/token.h"
 
-namespace cpplox{
+
 int main(int argc, char *argv[])
 {
 
 
     const std::string source = "print(\"Hello, world!\")";
-    Scanner scanner(source);
-    // std::vector<cpplox::Token> tokensVec = scanner.tokenize();
+    cpplox::Scanner scanner(source);
+    std::vector<cpplox::Token> tokensVec = scanner.tokenize();
+    for (auto token : tokensVec)
+    {
+        std::cout << token.toString() << std::endl;
+    }
     return 0;
-}}
+}
